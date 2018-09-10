@@ -2,30 +2,37 @@ import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import dynamic from 'dva/dynamic';
 
-const routes = [{
-    path: '/',
-    models: () => [import('./models/example')],
-    component: () => import('./routes/IndexPage'),
-}];
+const routes = [
+    {
+        path: '/',
+        models: () => [],
+        component: () => import('./routes/IndexPage'),
+    },
+    {
+        path: '/VtxDemo',
+        models: () => [import('./models/VtxDemoModel')],
+        component: () => import('./routes/VtxDemoPage/VtxDemoPage'),
+    }
+];
 
 function RouterConfig({ history, app }) {
     return (
         <Router history={history}>
-        <Switch>
-            {
-                routes.map(({ path, ...dynamics }, key) => (
-                    <Route
-                        key={key}
-                        exact
-                        path={path}
-                        component={dynamic({
-                        app,
-                        ...dynamics,
-                        })}
-                    />
-                ))
-            }
-        </Switch>
+            <Switch>
+                {
+                    routes.map(({ path, ...dynamics }, key) => (
+                        <Route
+                            key={key}
+                            exact
+                            path={path}
+                            component={dynamic({
+                                app,
+                                ...dynamics,
+                            })}
+                        />
+                    ))
+                }
+            </Switch>
         </Router>
     );
 }

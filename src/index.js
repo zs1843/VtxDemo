@@ -4,7 +4,8 @@ import './index.less';
 // 1. Initialize
 const app = dva();
 
-app.model(require("./models/VtxDemo/VtxDemo"));
+// app.model(require("./models/VtxDemoModel").default);
+
 
 // 2. Plugins
 // app.use({});
