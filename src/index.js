@@ -4,7 +4,11 @@ import './index.less';
 // 1. Initialize
 const app = dva();
 
-// app.model(require("./models/VtxDemoModel").default);
+app.model(require("./models/VtxDemo").default);
+
+app.model(require("./models/VtxDemoGrid").default);
+
+app.model(require("./models/vtxDemoModal").default);
 
 
 // 2. Plugins

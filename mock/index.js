@@ -65,43 +65,46 @@ export const columns = [{
             }
             <span className="ant-divider" />
             <Popconfirm title="确定删除吗？" okText="确定" cancelText="取消" onConfirm={() => {
-                message.info('删除')
+                dispatch({
+                    type: 'vtxGrid/deleteRow',
+                })
             }} >
                 <a>删除</a>
             </Popconfirm>
         </span>
     ),
-}, , {
-    title: '封装Button',
-    key: 'autoaction',
-    // width:200,
-    renderButtons: [
-        {
-            name: '查看',
-            onClick(rowData) {
-                message.info('查看' + rowData.key, 5);
-            }
-        }, {
-            name: '删除',
-            onClick(rowData) {
-                message.info('删除' + rowData.key, 5);
-            }
-        }, {
-            name: '编辑',
-            onClick(rowData) {
-                message.info('编辑' + rowData.key, 5);
-            }
-        }, {
-            name: 'hehei',
-            onClick(rowData) {
-                let t = Math.random();
-                message.info(t)
-            }
-        }, {
-            name: 'test',
-            onClick(rowData) {
-                message.info('dfsf');
-            }
-        }
-    ],
-}];
+}
+    // }, , {
+    //     title: '封装Button',
+    //     key: 'autoaction',
+    //     // width:200,
+    //     renderButtons: [
+    //         {
+    //             name: '查看',
+    //             onClick(rowData) {
+    //                 message.info('查看' + rowData.key, 5);
+    //             }
+    //         }, {
+    //             name: '删除',
+    //             onClick(rowData) {
+    //                 message.info('删除' + rowData.key, 5);
+    //             }
+    //         }, {
+    //             name: '编辑',
+    //             onClick(rowData) {
+    //                 message.info('编辑' + rowData.key, 5);
+    //             }
+    //         }, {
+    //             name: 'hehei',
+    //             onClick(rowData) {
+    //                 let t = Math.random();
+    //                 message.info(t)
+    //             }
+    //         }, {
+    //             name: 'test',
+    //             onClick(rowData) {
+    //                 message.info('dfsf');
+    //             }
+    //         }
+    //     ],
+];

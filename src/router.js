@@ -5,12 +5,10 @@ import dynamic from 'dva/dynamic';
 const routes = [
     {
         path: '/',
-        models: () => [],
         component: () => import('./routes/IndexPage'),
     },
     {
         path: '/VtxDemo',
-        models: () => [import('./models/VtxDemoModel')],
         component: () => import('./routes/VtxDemoPage/VtxDemoPage'),
     }
 ];

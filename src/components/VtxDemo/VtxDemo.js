@@ -1,25 +1,33 @@
 import React from 'react';
 import styles from './VtxDemo.less';
-import { VtxDatagrid } from 'vtx-ui';
-import { columns } from '../../../mock';
+import { VtxDemoModal, VtxDemoGrid } from '../../components';
+import { Icon } from 'antd';
+import { connect } from 'dva';
 
 function VtxDemo(props) {
-  let data = [];
-  for (let i = 0; i < 100; i++) {
-    data.push({
-      key: i,
-      name: 'John Brown',
-      age: parseInt(Math.random() * 100),
-      address: 'New York No. 1 Lake Park',
-      editMode: false,
+  const { dispatch } = props;
+  const showModal = () => {
+    dispatch({
+      type: 'vtxModalM/updateState',
+    })
+  }
+  const addItem = () => {
+    dispatch({
+      type: 'vtxGrid/addItem',
     })
   }
   return (
     <div className={styles.normal}>
-      Component: VtxDemo
-      <VtxDatagrid columns={columns} dataSource={data} hideColumn={false} />
+      <h1>Component: VtxDemo</h1>
+      <a onClick={showModal}>
+        <Icon type="plus-circle" style={{ color: "#108ee9", fontSize: '18px' }} />
+        <span>添加</span>
+      </a>
+      <VtxDemoGrid />
+      <VtxDemoModal addItem={addItem} />
     </div>
   );
 }
 
-export default VtxDemo;
+export default connect(({ vtxModalM, vtxGrid }) => ({ vtxModalM, vtxGrid }))(VtxDemo);
+
