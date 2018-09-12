@@ -8,23 +8,18 @@ function VtxDemo(props) {
   const { dispatch } = props;
   const showModal = () => {
     dispatch({
-      type: 'vtxModalM/updateState',
-    })
-  }
-  const addItem = () => {
-    dispatch({
-      type: 'vtxGrid/addItem',
+      type: 'vtxModalM/showModal',
     })
   }
   return (
     <div className={styles.normal}>
       <h1>Component: VtxDemo</h1>
-      <a onClick={showModal}>
+      <a className={styles.addBtn} onClick={showModal}>
         <Icon type="plus-circle" style={{ color: "#108ee9", fontSize: '18px' }} />
         <span>添加</span>
       </a>
       <VtxDemoGrid />
-      <VtxDemoModal addItem={addItem} />
+      <VtxDemoModal />
     </div>
   );
 }

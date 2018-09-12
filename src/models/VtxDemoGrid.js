@@ -65,12 +65,14 @@ export default {
       }
     },
     addItem(state, action) {
+      const { username, age, address } = action.payload || state;
       let newdataSource = [...state.dataSource, {
-        name: 'John Brown',
-        age: parseInt(Math.random() * 100),
-        address: 'New York No. 1 Lake Park',
+        username,
+        age,
+        address,
         editMode: false,
       }]
+      message.success('添加成功', 5);
       return {
         ...state,
         dataSource: newdataSource,
