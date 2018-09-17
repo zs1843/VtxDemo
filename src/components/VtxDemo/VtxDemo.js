@@ -3,6 +3,7 @@ import styles from './VtxDemo.less';
 import { VtxDemoModal, VtxDemoGrid } from '../../components';
 import { Icon } from 'antd';
 import { connect } from 'dva';
+import DemoMap from '../demoMap/DemoMap';
 
 function VtxDemo(props) {
   const { dispatch } = props;
@@ -18,6 +19,7 @@ function VtxDemo(props) {
         <Icon type="plus-circle" style={{ color: "#108ee9", fontSize: '18px' }} />
         <span>添加</span>
       </a>
+
       <VtxDemoGrid />
       <VtxDemoModal />
     </div>

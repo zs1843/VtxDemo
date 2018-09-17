@@ -19,6 +19,7 @@ export default {
     totalItems: 199,
     selectedRowKeys: [],
     visible: true,
+    autoFit: true,
     title: () => 'vtx demo modal',
   },
 

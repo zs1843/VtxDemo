@@ -10,6 +10,14 @@ const routes = [
     {
         path: '/VtxDemo',
         component: () => import('./routes/VtxDemoPage/VtxDemoPage'),
+    },
+    {
+        path: '/map',
+        component: () => import('./routes/Map/map'),
+    },
+    {
+        path: '/input',
+        component: () => import('./routes/Input/input'),
     }
 ];
 

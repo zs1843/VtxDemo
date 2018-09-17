@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './VtxDemoGrid.css';
+import styles from './VtxDemoGrid.less';
 import { VtxDatagrid } from 'vtx-ui';
 import { columns } from '../../../mock';
-import { Popconfirm, Input, message } from 'antd';
+import { Popconfirm, Input, message, Popover, Checkbox, Icon } from 'antd';
 
 function VtxDemoGrid(props) {
   const { dispatch } = props;
@@ -85,13 +85,76 @@ function VtxDemoGrid(props) {
         </Popconfirm>
       </span>
     ),
+  },
+  {
+    title: '封装Button',
+    key: 'autoaction',
+    // width:200,
+    renderButtons: [
+      {
+        name: '查看',
+        onClick(rowData) {
+          message.info('查看' + rowData.key, 5);
+        }
+      }, {
+        name: '删除',
+        onClick(rowData) {
+          message.info('删除' + rowData.key, 5);
+        }
+      }, {
+        name: '编辑',
+        onClick(rowData) {
+          message.info('编辑' + rowData.key, 5);
+        }
+      }, {
+        name: 'hehei',
+        onClick(rowData) {
+          let t = Math.random();
+          message.info(t)
+        }
+      }, {
+        name: 'test',
+        onClick(rowData) {
+          message.info('dfsf');
+        }
+      }
+    ],
   }
 
   ];
 
+  function changeColumnVisibility(title, visible) {
+    this.setState({
+      columnsVisibility: this.state.columnsVisibility.map(item => {
+        if (item.title == title) {
+          return {
+            title,
+            visible
+          }
+        }
+        return item;
+      })
+    })
+  }
+
   return (
     <div className={styles.normal} >
       <VtxDatagrid {...props} columns={columns} />
+      <Popover placement="bottomRight" title={'隐藏显示列'} content={
+        <div className={styles.titleSelectionContainer}>
+          {
+            columns.map(item => ({ title: item.title, visible: true })).map((item, index) =>
+              <Checkbox key={index} checked={item.visible} onChange={(e) => {
+                changeColumnVisibility(item.title, e.target.checked)
+              }}>
+                {item.title}
+              </Checkbox>
+            )
+          }
+        </div>
+      } trigger="click">
+        <Icon type="setting" className={styles.columnBt} />
+      </Popover>
     </div >
   );
 }
